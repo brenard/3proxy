@@ -2,3 +2,11 @@
 
 %:
 	dh  $@
+
+override_dh_auto_configure:
+	cp Makefile.Linux Makefile
+	cat Makefile > src/Makefile.var
+	dh_auto_configure
+
+override_dh_auto_install:
+	dh_auto_install -- prefix=/usr ETCDIR=$(CURDIR)/debian/3proxy/etc/3proxy

@@ -2,3 +2,5 @@ copying
 authors
 README
 Release.notes
+cfg/3proxy.cfg.sample
+doc/html
