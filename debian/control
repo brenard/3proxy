@@ -1,0 +1,14 @@
+Source: 3proxy
+Section: web
+Priority: optional
+Build-Depends: debhelper, build-essential, gcc, make
+Maintainer: Benjamin Renard <brenard@zionetrix.net>
+Homepage: https://3proxy.ru/
+
+Package: 3proxy
+Section: web
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Maintainer: Benjamin Renard <brenard@zionetrix.net>
+Description: A SOCKS5 proxy server
+ 3proxy is a tiny proxy server.

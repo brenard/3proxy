@@ -1,0 +1,68 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:		3proxy
+# Required-Start:	$remote_fs $syslog
+# Required-Stop:	$remote_fs $syslog
+# Default-Start:	2 3 4 5
+# Default-Stop:		0 1 6
+# Short-Description:	3proxy server
+### END INIT INFO
+
+set -e
+
+test -x /usr/bin/3proxy || exit 0
+
+umask 022
+
+CONFIG_FILE=/etc/3proxy/3proxy.cfg
+
+if test -f /etc/default/3proxy; then
+    . /etc/default/3proxy
+fi
+
+if test ! -f ${CONFIG_FILE}; then
+    echo "3proxy configuration file not found ! (${CONFIG_FILE})"
+    exit 1
+fi
+
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+	log_daemon_msg "Starting 3proxy server" "3proxy" || true
+	if start-stop-daemon --start --quiet --background --oknodo --make-pidfile --pidfile /var/run/3proxy.pid --exec /usr/bin/3proxy -- ${CONFIG_FILE}; then
+	    log_end_msg 0 || true
+	else
+	    log_end_msg 1 || true
+	fi
+	;;
+  stop)
+	log_daemon_msg "Stopping 3proxy server" "3proxy" || true
+	if start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/3proxy.pid; then
+	    log_end_msg 0 || true
+	else
+	    log_end_msg 1 || true
+	fi
+	;;
+
+  reload|force-reload|restart)
+	log_daemon_msg "Restarting 3proxy server" "3proxy" || true
+	start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile /var/run/3proxy.pid
+	if start-stop-daemon --start --quiet --background --oknodo --make-pidfile --pidfile /var/run/3proxy.pid --exec /usr/bin/3proxy -- ${CONFIG_FILE}; then
+	    log_end_msg 0 || true
+	else
+	    log_end_msg 1 || true
+	fi
+	;;
+
+  status)
+	status_of_proc -p /var/run/3proxy.pid /usr/bin/3proxy 3proxy && exit 0 || exit $?
+	;;
+
+  *)
+	log_action_msg "Usage: /etc/init.d/3proxy {start|stop|reload|force-reload|restart|status}" || true
+	exit 1
+esac
+
+exit 0

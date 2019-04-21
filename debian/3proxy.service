@@ -1,0 +1,14 @@
+[Unit]
+Description=3proxy server
+After=network.target auditd.service
+
+[Service]
+ExecStart=/usr/bin/3proxy /etc/3proxy/3proxy.cfg
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartPreventExitStatus=255
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

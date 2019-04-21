@@ -1,0 +1,27 @@
+This package was originaly debianized by Benjamin Renard <brenard@zionetrix.net> on
+Fri, 18 Aug 2017 01:27:48 +0200, from 3proxy sources version 0.8.10 adapted by
+packager.
+
+Original source is available here :
+
+https://3proxy.ru/download/
+
+Copyright:
+
+    3proxy is copyright :
+
+      (c) 2000-2014 by 3APA3A (3APA3A@security.nnov.ru)
+      (c) 2000-2014 by SecurityVulns.com (http://3proxy.ru/)
+      (c) 2000-2014 by Vladimir Dubrovin (vlad@sandy.ru)
+
+    This software is issued from 3proxy 0.7 Public License Agreement
+
+License:
+
+    You can use it under 3proxy 0.7 Public License Agreement
+
+    For more information on 3proxy 0.7 Public License Agreement,
+    please refer to /usr/share/doc/3proxy/copying file.
+
+The Debian packaging is (C) 2017, Benjamin Renard <brenard@zionetrix.net> and
+is licensed under the GNU GENERAL PUBLIC LICENSE Version.

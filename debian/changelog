@@ -1,0 +1,11 @@
+3proxy (0.8.12-1) unstable; urgency=low
+
+  * Upgrade to upstream 0.8.12 version
+
+ -- Benjamin Renard <brenard@zionetrix.net>  Sun, 21 Apr 2019 11:36:23 +0200
+
+3proxy (0.8.10-1) unstable; urgency=low
+
+  * Initial Debian release
+
+ -- Benjamin Renard <brenard@zionetrix.net>  Fri, 18 Aug 2017 01:27:48 +0200

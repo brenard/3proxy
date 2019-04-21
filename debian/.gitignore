@@ -1,0 +1,5 @@
+3proxy
+3proxy*.debhelper
+files
+debhelper-build-stamp
+3proxy.substvars
